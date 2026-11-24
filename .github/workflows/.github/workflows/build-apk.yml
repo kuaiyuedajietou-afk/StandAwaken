@@ -1,0 +1,43 @@
+
+姓名: 构建Android安装包
+
+在……之上:
+workflow_dispatch:
+推:
+路径:
+      - 'StandAwakenAndroid_Project-2.zip'
+      - '.github/workflows/build-apk.yml'
+
+招聘:
+建立:
+run-on: ubuntu-最新
+
+步骤:
+      - 姓名: 结账
+uses: 操作/结帐@v4
+
+      - 姓名: 安装Java
+uses: 操作/设置-java@v4
+和……一起:
+分布: temurin
+java版: '17'
+
+      - 姓名: 设置渐变
+uses: gradle/操作/设置-gradle@v4
+和……一起:
+gradle-version: '8.9'
+
+      - 姓名: 抽取游戏
+跑: |
+unzip-q StandAwakenAndroid_Project-2.zip-d源
+
+      - 姓名: 构建安装包
+跑: |
+CD源/StandAwaken安卓
+gradle-no-demon:app：装配调试
+
+      - 姓名: 上传安装包
+uses: 操作/上载工件@v4
+和……一起:
+姓名: StandAwake-APK
+路径: 源/StandAwaken安卓/app/build/outputs/apk/debug/app-debug.APK
